@@ -1,9 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
 package rest_errors
 
 import (
@@ -61,7 +55,7 @@ func NewRestErrorFromBytes(bytes []byte) (RestErr, error) {
 	return apiErr, nil
 }
 
-func NewBadRequestError(message string) RestErr {
+func NewBadRequestError(message string) *RestErr {
 	return restErr{
 		ErrMessage: message,
 		ErrStatus:  http.StatusBadRequest,
@@ -69,7 +63,7 @@ func NewBadRequestError(message string) RestErr {
 	}
 }
 
-func NewNotFoundError(message string) RestErr {
+func NewNotFoundError(message string) *RestErr {
 	return restErr{
 		ErrMessage: message,
 		ErrStatus:  http.StatusNotFound,
@@ -85,7 +79,7 @@ func NewUnauthorizedError(message string) RestErr {
 	}
 }
 
-func NewInternalServerError(message string, err error) RestErr {
+func NewInternalServerError(message string, err error) *RestErr {
 	result := restErr{
 		ErrMessage: message,
 		ErrStatus:  http.StatusInternalServerError,
